@@ -48,7 +48,7 @@ AvtoShop — это современный веб-сайт для автосер
 | MySQL Workbench   | Проектирование и администрирование БД |
 | Git               | Контроль версий                   |
 | Postman           | Тестирование API                  |
-| VS Code           | Редактор кода                     |
+| VS Code/Блокнот   | Редактор кода                     |
 | Figma             | Дизайн и прототипирование         |
 
 ## 🔐 Безопасность и хеширование паролей
@@ -124,10 +124,17 @@ avtoservice-landing/
 │   └── global.css
 │
 ├── server/
-│   ├── server.js
-│   ├── package.json
-│   ├── .env
-│   └── uploads/
+│   ├── server.js                 # Основной файл сервера
+│   ├── db.js                     # Подключение к БД
+│   ├── package.json              # Зависимости
+│   ├── .env                      # Переменные окружения
+│   ├── models/
+│       ├── serviceModel.js       # CRUD для услуг
+│       ├── reviewModel.js        # CRUD для отзывов
+│       └── adminModel.js         # Поиск администратора
+│   ├── middleware/
+│       └── auth.js               # Проверка JWT-токена
+│       └── uploads/              # Папка для иконок услуг
 │
 ├── docs/
 │   └── ...
