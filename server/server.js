@@ -198,6 +198,33 @@ app.post('/api/reviews', async (req, res) => {
     }
 });
 
+// DELETE — удалить отзыв (только для админа)
+app.delete('/api/reviews/:id', authenticateToken, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deleted = await ReviewModel.delete(id);
+        
+        if (!deleted) {
+            return res.status(404).json({ 
+                success: false,
+                message: 'Отзыв не найден' 
+            });
+        }
+
+        res.json({ 
+            success: true, 
+            message: 'Отзыв удален' 
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 
+            success: false,
+            message: 'Ошибка удаления отзыва' 
+        });
+    }
+});
+
 // ---------- ЗАПУСК СЕРВЕРА ----------
 app.listen(PORT, () => {
     console.log(`Сервер запущен на http://localhost:${PORT}`);

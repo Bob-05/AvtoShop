@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AVTOSHOP | Надежный автосервис в Тихорецке</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header">
+    <div class="container header-container">
+        <a href="#" class="logo-area">
+            <img src="images/logo.png" alt="AvtoShop Logo" class="logo-img" onerror="this.style.display='none'; this.nextSibling.style.display='flex'">
+            <div class="logo-icon" style="display: none;">🚗</div>
+            <div class="logo-divider"></div>
+            <div class="logo-text">AvtoShop</div>
+        </a>
+        <nav class="main-nav">
+            <a href="#services">Услуги</a>
+            <a href="#advantages">Преимущества</a>
+            <a href="#about">О нас</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+            <!-- ИЗМЕНЕНО: ссылка на отдельную админ-панель -->
+            <a href="admin/index.html">Вход</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="hero-section">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Надежный автосервис<br>в Тихорецке</h1>
+            <p class="hero-description">Полное техническое обслуживание, диагностика, ремонт ходовой, КПП, электрики, замена масла — всё в одном месте.</p>
+            <div class="hero-info">
+                <span>📍 ул. Гражданская, 95</span>
+                <span>📞 +7 (909) 452-10-10</span>
+                <span>📅 Пн–Вс: 08:00–18:00</span>
+                <span>💳 Оплата картой и наличными</span>
+            </div>
+            <a href="#services" class="btn">Смотреть услуги</a>
+        </div>
+        <div class="hero-image-wrapper">
+            <!-- МАШИНКА: если есть images/car.png - покажется, если нет - покажется SVG -->
+            <img src="images/car.png" alt="Автомобиль" class="hero-car" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+            <svg class="hero-car" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <rect width="600" height="400" fill="#1e61ff" opacity="0.1"/>
+                <path d="M100,280 L500,280 L540,340 L60,340 Z" fill="#1e61ff" opacity="0.8"/>
+                <circle cx="180" cy="340" r="30" fill="#333" stroke="#aaa" stroke-width="4"/>
+                <circle cx="420" cy="340" r="30" fill="#333" stroke="#aaa" stroke-width="4"/>
+                <rect x="250" y="200" width="100" height="40" fill="#dc2626" rx="5"/>
+                <rect x="270" y="180" width="60" height="25" fill="#222" rx="3"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- ========== УСЛУГИ ========== -->
+<section id="services" class="services-section">
+    <div class="container relative-container">
+        <h2 class="section-title">Услуги</h2>
+        <button class="nav-arrow prev-arrow" id="prevServiceBtn">◀</button>
+        <div class="services-grid" id="servicesGrid"></div>
+        <button class="nav-arrow next-arrow" id="nextServiceBtn">▶</button>
+    </div>
+</section>
+
+<!-- ========== ПРЕИМУЩЕСТВА ========== -->
+<section id="advantages" class="advantages-section">
+    <div class="container">
+        <h2 class="section-title">Наши преимущества</h2>
+        <div class="advantages-grid">
+            <div class="card"><div class="card-icon">⭐</div><h3 class="card-title">Качество работы</h3><p class="card-desc">Высокое качество ремонта и обслуживания автомобилей.</p></div>
+            <div class="card"><div class="card-icon">⚡</div><h3 class="card-title">Скорость выполнения</h3><p class="card-desc">Быстрое и качественное выполнение всех услуг.</p></div>
+            <div class="card"><div class="card-icon">💰</div><h3 class="card-title">Доступные цены</h3><p class="card-desc">Предлагаем выгодные цены на все виды ремонта.</p></div>
+            <div class="card"><div class="card-icon">🔧</div><h3 class="card-title">Профессиональные мастера</h3><p class="card-desc">Квалифицированные специалисты с опытом.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== О НАС ========== -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title">О нас</h2>
+        <div class="about-text">
+            Автосервис AVTOSHOP — это команда профессионалов с более чем 10-летним опытом работы. Мы специализируемся на ремонте и обслуживании автомобилей любой сложности. Используем только проверенные материалы и современное оборудование. Нам важно не просто починить автомобиль, а дать вам уверенность на дороге.
+        </div>
+    </div>
+</section>
+
+<!-- ========== ОТЗЫВЫ ========== -->
+<section id="reviews" style="scroll-margin-top: 80px;">
+    <div class="container">
+        <div class="reviews-header">
+            <h3>Отзывы клиентов</h3>
+            <button id="openReviewModal" class="btn-outline">Оставить отзыв</button>
+        </div>
+        
+        <div class="reviews-carousel-wrapper">
+            <button class="reviews-nav-arrow reviews-prev" id="reviewsPrevBtn">◀</button>
+            <div class="reviews-carousel-container" id="reviewsCarouselContainer">
+                <div class="reviews-carousel" id="reviewsCarousel">
+                    <div class="reviews-wrapper" id="reviewsWrapper">
+                        <!-- Отзывы загружаются из JS -->
+                    </div>
+                </div>
+            </div>
+            <button class="reviews-nav-arrow reviews-next" id="reviewsNextBtn">▶</button>
+        </div>
+    </div>
+</section>
+
+<!-- ========== КАРТА И КОНТАКТЫ ========== -->
+<section id="contacts" style="scroll-margin-top: 80px;">
+    <div class="container">
+        <h2 class="section-title">Мы на карте</h2>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?ll=40.130385%2C45.870195&z=17&pt=40.130385,45.870195,flag&l=map"
+                width="100%" 
+                height="400" 
+                style="border:0; border-radius: 20px;"
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <div class="footer-contacts">
+            <div class="footer-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <strong>Адрес</strong>
+                    <p>г. Тихорецк, ул. Гражданская, 95</p>
+                </div>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <strong>Телефон</strong>
+                    <p>+7 (909) 452-10-10</p>
+                </div>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <strong>Режим работы</strong>
+                    <p>Пн–Вс: 08:00 – 18:00</p>
+                </div>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>Email</strong>
+                    <p>info@avtoshop.ru</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 AVTOSHOP — Надежный автосервис в Тихорецке</p>
+        <p style="margin-top: 10px; font-size: 12px;">Все права защищены</p>
+    </div>
+</footer>
+
+<!-- МОДАЛКА ОТЗЫВОВ -->
+<div id="reviewModal" class="modal">
+    <div class="modal-inner">
+        <span class="close" id="closeReviewModal">&times;</span>
+        <h3>Оставьте свой отзыв</h3>
+        <form id="reviewForm">
+            <label>Ваше имя</label>
+            <input type="text" id="reviewName" required>
+            <label>Текст отзыва</label>
+            <textarea id="reviewText" rows="3" required></textarea>
+            <label>Оценка</label>
+            <div id="starWidget" class="star-selector">★★★★★</div>
+            <input type="hidden" id="ratingValue" value="5">
+            <button type="submit" class="btn" style="margin-top: 20px;">Оставить отзыв</button>
+        </form>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
