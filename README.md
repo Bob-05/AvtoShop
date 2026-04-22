@@ -22,9 +22,9 @@ AvtoShop — это современный веб-сайт для автосер
 
 | Технология         | Версия  | Назначение                              |
 |--------------------|---------|-----------------------------------------|
-| HTML               | 5.0   | Построение структуры сайта                |
-| CSS (модульные стили) | —    | Стилизация компонентов                  |
-| JavaScript         | ES2025   | API-запросы к серверу                  |
+| HTML               | 5.0     | Построение структуры сайта              |
+| CSS                | 3.0     | Стилизация компонентов                  |
+| JavaScript         | ES2025  | API-запросы к серверу, динамический рендеринг |
 
 ### Backend
 
@@ -44,9 +44,8 @@ AvtoShop — это современный веб-сайт для автосер
 | Инструмент        | Назначение                        |
 |-------------------|-----------------------------------|
 | MySQL Workbench   | Проектирование и администрирование БД |
-| Git               | Контроль версий                   |
-| Postman           | Тестирование API                  |
-| VS Code/Блокнот   | Редактор кода                     |
+| Git               | Контроль версий                   
+| VS Code / Блокнот           | Редактор кода                     |
 | Figma             | Дизайн и прототипирование         |
 
 ## 🔐 Безопасность и хеширование паролей
@@ -90,56 +89,42 @@ if (isValid) {
 
 ```
 avtoservice-landing/
-├── public/
-│   ├── index.html
-│   ├── manifest.json
-│   └── favicon.ico
+├── index.html                    # Главная страница
 │
-├── src/
-│   ├── assets/
-│   │   └── *.png
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Services.jsx
-│   │   ├── Advantages.jsx
-│   │   ├── About.jsx
-│   │   ├── Testimonials.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Login.jsx
-│   │   ├── AdminPanel.jsx
-│   │   └── ProtectedRoute.jsx
-│   ├── styles/
-│   │   ├── Header.css
-│   │   ├── Hero.css
-│   │   ├── Services.css
-│   │   └── ...
-│   ├── App.js
-│   ├── App.css
-│   ├── index.js
-│   ├── index.css
-│   └── global.css
+├── css/
+│   └── style.css                 # Стили главной страницы
+│
+├── js/
+│   └── script.js                 # Модуль для работы с API
+│
+├── images/
+│   └── *.png                     # Изображения и иконки
+│
+├── admin/
+│   ├── index.html                # Страница входа
+│   ├── panel.html                # Панель управления
+│   ├── admin.css                 # Стили админ-панели
+│   └── admin.js                  # Логика админ-панели
 │
 ├── server/
 │   ├── server.js                 # Основной файл сервера
 │   ├── db.js                     # Подключение к БД
-│   ├── package.json              # Зависимости
+│   ├── package.json              # Зависимости бэкенда
 │   ├── .env                      # Переменные окружения
+│   ├── generateHash.js           # Генерация хэш-код пароля
+│   ├── avtoshop_db.sql           # SQL-скрипт БД
 │   ├── models/
-│       ├── serviceModel.js       # CRUD для услуг
-│       ├── reviewModel.js        # CRUD для отзывов
-│       └── adminModel.js         # Поиск администратора
+│   │   ├── serviceModel.js       # CRUD для услуг
+│   │   ├── reviewModel.js        # CRUD для отзывов
+│   │   └── adminModel.js         # Поиск администратора
 │   ├── middleware/
-│       └── auth.js               # Проверка JWT-токена
-│       └── uploads/              # Папка для иконок услуг
+│   │   └── auth.js               # Проверка JWT-токена
+│   └── uploads/                  # Папка для иконок услуг
 │
-├── docs/
+├── docs/                         # Документация (практические работы)
 │   └── ...
 │
-├── package.json
-├── package-lock.json
-└── README.md
+└── README.md                     # Этот файл
 ```
 
 ## 🗄 Структура базы данных (MySQL)
@@ -186,18 +171,13 @@ avtoservice-landing/
    cd avtoservice-landing
    ```
 
-2. **Установка зависимостей фронтенда**
-   ```bash
-   npm install
-   ```
+2. Запуск фронтенда
+Откройте файл index.html в браузере или используйте Live Server в VS Code:
+ - Установите расширение Live Server
+ - Нажмите правой кнопкой на index.html → Open with Live Server
+ - Сайт откроется по адресу: http://127.0.0.1:5500
 
-3. **Запуск фронтенда (React)**
-   ```bash
-   npm start
-   ```
-   Приложение откроется по адресу: http://localhost:3000
-
-4. **Настройка и запуск бэкенда**
+3. **Настройка и запуск бэкенда**
    ```bash
    cd server
    npm install
@@ -205,7 +185,7 @@ avtoservice-landing/
    ```
    Сервер запустится на порту 5000.
 
-5. **Настройка базы данных**
+4. **Настройка базы данных**
    Убедитесь, что MySQL Server установлен и запущен:
    ```bash
    net start MySQL80

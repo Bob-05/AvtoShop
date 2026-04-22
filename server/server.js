@@ -18,6 +18,33 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // =============================================
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (оптимизация кода)
+// =============================================
+
+// Обработка ошибок
+function handleError(res, error, message = 'Ошибка сервера') {
+    console.error(error);
+    res.status(500).json({ 
+        success: false, 
+        message 
+    });
+}
+
+// Проверка обязательных полей
+function validateRequired(req, res, fields) {
+    for (const field of fields) {
+        if (!req.body[field]) {
+            res.status(400).json({ 
+                success: false, 
+                message: `Поле ${field} обязательно` 
+            });
+            return false;
+        }
+    }
+    return true;
+}
+
+// =============================================
 // API ЭНДПОИНТЫ
 // =============================================
 
@@ -63,54 +90,48 @@ app.post('/api/login', async (req, res) => {
             message: 'Вход выполнен успешно' 
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            success: false, 
-            message: 'Ошибка сервера' 
-        });
+        handleError(res, error, 'Ошибка сервера при авторизации');
     }
 });
 
 // ---------- УСЛУГИ (ПУБЛИЧНЫЕ) ----------
-// GET — получить все услуги
+// GET — получить все услуги (только нужные поля — оптимизация)
 app.get('/api/posts', async (req, res) => {
     try {
-        const services = await ServiceModel.findAll();
+        const services = await ServiceModel.findAllPublic();
         res.json(services);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка загрузки услуг' 
-        });
+        handleError(res, error, 'Ошибка загрузки услуг');
     }
 });
 
 // ---------- УСЛУГИ (ЗАЩИЩЁННЫЕ) ----------
-// POST — добавить услугу
+// POST — добавить услугу (1 запрос вместо 2 — оптимизация)
 app.post('/api/posts', authenticateToken, async (req, res) => {
+    if (!validateRequired(req, res, ['name', 'description', 'price'])) return;
+    
     const { name, icon, description, price } = req.body;
-
-    if (!name || !description || !price) {
-        return res.status(400).json({ 
-            message: 'Название, описание и цена обязательны' 
-        });
-    }
 
     try {
         const id = await ServiceModel.create(name, description, price, icon || null);
-        const newService = await ServiceModel.findById(id);
-        res.status(201).json(newService);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка добавления услуги' 
+        // Возвращаем данные без дополнительного SELECT
+        res.status(201).json({
+            id,
+            name,
+            description,
+            price,
+            icon_url: icon || null
         });
+    } catch (error) {
+        handleError(res, error, 'Ошибка добавления услуги');
     }
 });
 
-// PUT — обновить услугу
+// PUT — обновить услугу (1 запрос вместо 2 — оптимизация)
 app.put('/api/post/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
+    if (!validateRequired(req, res, ['name', 'description', 'price'])) return;
+    
     const { name, icon, description, price } = req.body;
 
     try {
@@ -118,17 +139,22 @@ app.put('/api/post/:id', authenticateToken, async (req, res) => {
         
         if (!updated) {
             return res.status(404).json({ 
+                success: false,
                 message: 'Услуга не найдена' 
             });
         }
 
-        const updatedService = await ServiceModel.findById(id);
-        res.json(updatedService);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка обновления услуги' 
+        res.json({ 
+            success: true,
+            id,
+            name,
+            description,
+            price,
+            icon_url: icon || null,
+            message: 'Услуга обновлена' 
         });
+    } catch (error) {
+        handleError(res, error, 'Ошибка обновления услуги');
     }
 });
 
@@ -141,6 +167,7 @@ app.delete('/api/post/:id', authenticateToken, async (req, res) => {
         
         if (!deleted) {
             return res.status(404).json({ 
+                success: false,
                 message: 'Услуга не найдена' 
             });
         }
@@ -150,10 +177,7 @@ app.delete('/api/post/:id', authenticateToken, async (req, res) => {
             message: 'Услуга удалена' 
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка удаления услуги' 
-        });
+        handleError(res, error, 'Ошибка удаления услуги');
     }
 });
 
@@ -164,26 +188,20 @@ app.get('/api/reviews', async (req, res) => {
         const reviews = await ReviewModel.findAll();
         res.json(reviews);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка загрузки отзывов' 
-        });
+        handleError(res, error, 'Ошибка загрузки отзывов');
     }
 });
 
 // POST — добавить отзыв
 app.post('/api/reviews', async (req, res) => {
+    if (!validateRequired(req, res, ['name', 'text', 'rating'])) return;
+    
     const { name, text, rating } = req.body;
-
-    if (!name || !text || !rating) {
-        return res.status(400).json({ 
-            message: 'Имя, текст и рейтинг обязательны' 
-        });
-    }
 
     try {
         const id = await ReviewModel.create(name, text, rating);
         res.status(201).json({ 
+            success: true,
             id, 
             name, 
             text, 
@@ -191,10 +209,7 @@ app.post('/api/reviews', async (req, res) => {
             message: 'Отзыв добавлен' 
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            message: 'Ошибка добавления отзыва' 
-        });
+        handleError(res, error, 'Ошибка добавления отзыва');
     }
 });
 
@@ -217,11 +232,7 @@ app.delete('/api/reviews/:id', authenticateToken, async (req, res) => {
             message: 'Отзыв удален' 
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ 
-            success: false,
-            message: 'Ошибка удаления отзыва' 
-        });
+        handleError(res, error, 'Ошибка удаления отзыва');
     }
 });
 

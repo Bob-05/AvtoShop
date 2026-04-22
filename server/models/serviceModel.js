@@ -10,10 +10,18 @@ class ServiceModel {
         return result.insertId;
     }
 
-    // READ — получение всех услуг
+    // READ — получение всех услуг (полные данные, для админ-панели)
     static async findAll() {
         const [rows] = await db.query(
             'SELECT * FROM services ORDER BY id DESC'
+        );
+        return rows;
+    }
+
+    // READ — получение всех услуг (только нужные поля, для публичной части)
+    static async findAllPublic() {
+        const [rows] = await db.query(
+            'SELECT id, name, description, price, icon_url FROM services ORDER BY id DESC'
         );
         return rows;
     }
