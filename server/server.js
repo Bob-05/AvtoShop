@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const path = require('path'); // <-- Добавил для корректной работы путей
 require('dotenv').config();
 
 const ServiceModel = require('./models/serviceModel');
@@ -12,10 +13,14 @@ const { authenticateToken } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// =============================================
+// MIDDLEWARE (Важно, чтобы static был выше listen)
+// =============================================
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+// Используем path.join для абсолютной точности пути
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+console.log('📁 ПАПКА ДЛЯ КАРТИНОК:', path.join(__dirname, 'uploads'));
 
 // =============================================
 // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (оптимизация кода)
