@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 -- Пароль для входа: admin123
 -- Хеш сгенерирован с помощью bcrypt (10 раундов соли)
 INSERT INTO admin (email, password_hash) VALUES 
-('admin@avtoshop.ru', '$2b$10$fM8P6V0Z1G2hO5sL9W4yXeQ1vK3nB5mR7tY6pL8sJ9kF0dA1bC2eD')
+('admin@avtoshop.ru', '$2b$10$uXK4XE2nNGeL68wUflu9quZefwjCClfNnQzFW6FQ5AAYeH4Ob6MQ6')
 ON DUPLICATE KEY UPDATE email = email;
 
 -- =============================================

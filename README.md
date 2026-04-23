@@ -113,7 +113,6 @@ avtoservice-landing/
 │   ├── .env                      # Переменные окружения
 │   ├── generateHash.js           # Генерация хэш-код пароля
 │   ├── avtoshop_db.sql           # SQL-скрипт БД
-│   ├── backup.sql                # Бэкап БД с предустановленным админом
 │   ├── models/
 │   │   ├── serviceModel.js       # CRUD для услуг
 │   │   ├── reviewModel.js        # CRUD для отзывов
