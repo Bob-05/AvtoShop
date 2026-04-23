@@ -3,8 +3,9 @@
     "",
     "\\admin",
     "\\css",
-    "\\server\\models"
+    "\\server",
+    "\\server\\uploads"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
