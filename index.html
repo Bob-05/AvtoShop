@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AVTOSHOP | Надежный автосервис в Тихорецке</title>
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="http://localhost:5000">
+    <link rel="dns-prefetch" href="http://localhost:5000">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ========== HEADER ========== -->
 <header class="site-header">
     <div class="container header-container">
         <a href="#" class="logo-area">
@@ -28,13 +28,11 @@
             <a href="#about">О нас</a>
             <a href="#reviews">Отзывы</a>
             <a href="#contacts">Контакты</a>
-            <!-- ИЗМЕНЕНО: ссылка на отдельную админ-панель -->
             <a href="admin/index.html">Вход</a>
         </nav>
     </div>
 </header>
 
-<!-- ========== HERO SECTION ========== -->
 <section class="hero-section">
     <div class="container hero-container">
         <div class="hero-content">
@@ -49,8 +47,7 @@
             <a href="#services" class="btn">Смотреть услуги</a>
         </div>
         <div class="hero-image-wrapper">
-            <!-- МАШИНКА: если есть images/car.png - покажется, если нет - покажется SVG -->
-            <img src="images/car.png" alt="Автомобиль" class="hero-car" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+            <img src="images/car.png" alt="Автомобиль" class="hero-car" loading="lazy" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
             <svg class="hero-car" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <rect width="600" height="400" fill="#1e61ff" opacity="0.1"/>
                 <path d="M100,280 L500,280 L540,340 L60,340 Z" fill="#1e61ff" opacity="0.8"/>
@@ -63,7 +60,6 @@
     </div>
 </section>
 
-<!-- ========== УСЛУГИ ========== -->
 <section id="services" class="services-section">
     <div class="container relative-container">
         <h2 class="section-title">Услуги</h2>
@@ -73,20 +69,34 @@
     </div>
 </section>
 
-<!-- ========== ПРЕИМУЩЕСТВА ========== -->
 <section id="advantages" class="advantages-section">
     <div class="container">
         <h2 class="section-title">Наши преимущества</h2>
         <div class="advantages-grid">
-            <div class="card"><div class="card-icon">⭐</div><h3 class="card-title">Качество работы</h3><p class="card-desc">Высокое качество ремонта и обслуживания автомобилей.</p></div>
-            <div class="card"><div class="card-icon">⚡</div><h3 class="card-title">Скорость выполнения</h3><p class="card-desc">Быстрое и качественное выполнение всех услуг.</p></div>
-            <div class="card"><div class="card-icon">💰</div><h3 class="card-title">Доступные цены</h3><p class="card-desc">Предлагаем выгодные цены на все виды ремонта.</p></div>
-            <div class="card"><div class="card-icon">🔧</div><h3 class="card-title">Профессиональные мастера</h3><p class="card-desc">Квалифицированные специалисты с опытом.</p></div>
+            <div class="advantage-card">
+                <div class="advantage-icon">⭐</div>
+                <h3 class="advantage-title">Качество работы</h3>
+                <p class="advantage-desc">Высокое качество ремонта и обслуживания автомобилей.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">⚡</div>
+                <h3 class="advantage-title">Скорость выполнения</h3>
+                <p class="advantage-desc">Быстрое и качественное выполнение всех услуг.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">💰</div>
+                <h3 class="advantage-title">Доступные цены</h3>
+                <p class="advantage-desc">Предлагаем выгодные цены на все виды ремонта.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">🔧</div>
+                <h3 class="advantage-title">Профессиональные мастера</h3>
+                <p class="advantage-desc">Квалифицированные специалисты с опытом.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ========== О НАС ========== -->
 <section id="about" class="about-section">
     <div class="container">
         <h2 class="section-title">О нас</h2>
@@ -96,7 +106,6 @@
     </div>
 </section>
 
-<!-- ========== ОТЗЫВЫ ========== -->
 <section id="reviews" style="scroll-margin-top: 80px;">
     <div class="container">
         <div class="reviews-header">
@@ -108,9 +117,7 @@
             <button class="reviews-nav-arrow reviews-prev" id="reviewsPrevBtn">◀</button>
             <div class="reviews-carousel-container" id="reviewsCarouselContainer">
                 <div class="reviews-carousel" id="reviewsCarousel">
-                    <div class="reviews-wrapper" id="reviewsWrapper">
-                        <!-- Отзывы загружаются из JS -->
-                    </div>
+                    <div class="reviews-wrapper" id="reviewsWrapper"></div>
                 </div>
             </div>
             <button class="reviews-nav-arrow reviews-next" id="reviewsNextBtn">▶</button>
@@ -118,7 +125,6 @@
     </div>
 </section>
 
-<!-- ========== КАРТА И КОНТАКТЫ ========== -->
 <section id="contacts" style="scroll-margin-top: 80px;">
     <div class="container">
         <h2 class="section-title">Мы на карте</h2>
@@ -174,7 +180,6 @@
     </div>
 </footer>
 
-<!-- МОДАЛКА ОТЗЫВОВ -->
 <div id="reviewModal" class="modal">
     <div class="modal-inner">
         <span class="close" id="closeReviewModal">&times;</span>

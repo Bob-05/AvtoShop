@@ -4,6 +4,12 @@ let currentDeleteId = null;
 let currentDeleteType = null;
 let editingServiceId = null;
 
+// ========== КЭШ ДАННЫХ ==========
+const cache = {
+    services: null,
+    reviews: null
+};
+
 // ========== ПРОВЕРКА АВТОРИЗАЦИИ ==========
 function checkAuth() {
     const token = localStorage.getItem('avtoshop_token');
@@ -44,10 +50,15 @@ async function apiRequest(endpoint, method = 'GET', body = null) {
     }
 }
 
-// ========== ЗАГРУЗКА УСЛУГ ==========
-async function loadServices() {
+// ========== ЗАГРУЗКА УСЛУГ (с кэшем) ==========
+async function loadServices(forceRefresh = false) {
     const container = document.getElementById('adminServicesList');
     if (!container) return;
+    
+    if (!forceRefresh && cache.services) {
+        renderServices();
+        return;
+    }
     
     container.innerHTML = '<div class="loading">Загрузка услуг...</div>';
     
@@ -58,7 +69,15 @@ async function loadServices() {
         return;
     }
     
-    container.innerHTML = services.map(service => `
+    cache.services = services;
+    renderServices();
+}
+
+function renderServices() {
+    const container = document.getElementById('adminServicesList');
+    if (!container || !cache.services) return;
+    
+    container.innerHTML = cache.services.map(service => `
         <div class="service-item">
             <div class="service-info">
                 <h3>${escapeHtml(service.name)}</h3>
@@ -75,10 +94,15 @@ async function loadServices() {
     `).join('');
 }
 
-// ========== ЗАГРУЗКА ОТЗЫВОВ ==========
-async function loadReviews() {
+// ========== ЗАГРУЗКА ОТЗЫВОВ (с кэшем) ==========
+async function loadReviews(forceRefresh = false) {
     const container = document.getElementById('adminReviewsList');
     if (!container) return;
+    
+    if (!forceRefresh && cache.reviews) {
+        renderReviews();
+        return;
+    }
     
     container.innerHTML = '<div class="loading">Загрузка отзывов...</div>';
     
@@ -89,7 +113,15 @@ async function loadReviews() {
         return;
     }
     
-    container.innerHTML = reviews.map(review => `
+    cache.reviews = reviews;
+    renderReviews();
+}
+
+function renderReviews() {
+    const container = document.getElementById('adminReviewsList');
+    if (!container || !cache.reviews) return;
+    
+    container.innerHTML = cache.reviews.map(review => `
         <div class="review-item">
             <div class="review-info">
                 <strong>${escapeHtml(review.name)}</strong>
@@ -123,15 +155,18 @@ async function saveService(event) {
     
     if (result) {
         closeServiceModal();
-        loadServices();
+        cache.services = null;
+        loadServices(true);
     } else {
-        alert('Ошибка сохранения');
+        showToast('Ошибка сохранения');
     }
 }
-
 async function editService(id) {
-    const services = await apiRequest('/posts');
-    const service = services.find(s => s.id === id);
+    if (!cache.services) {
+        await loadServices();
+    }
+    
+    const service = cache.services?.find(s => s.id === id);
     
     if (service) {
         editingServiceId = id;
@@ -170,14 +205,15 @@ async function executeDelete() {
     
     if (result) {
         if (currentDeleteType === 'service') {
-            loadServices();
+            cache.services = null;
+            loadServices(true);
         } else {
-            loadReviews();
+            cache.reviews = null;
+            loadReviews(true);
         }
     } else {
-        alert('Ошибка удаления');
+        showToast('Ошибка удаления');
     }
-    
     currentDeleteId = null;
     currentDeleteType = null;
 }
@@ -201,6 +237,22 @@ function closeConfirmModal() {
     document.getElementById('confirmModal').style.display = 'none';
 }
 
+// ========== TOAST УВЕДОМЛЕНИЯ ==========
+function showToast(message, type = 'success') {
+    const existingToast = document.querySelector('.toast');
+    if (existingToast) existingToast.remove();
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
 // ========== ВСПОМОГАТЕЛЬНЫЕ ==========
 function escapeHtml(str) {
     if (!str) return '';
@@ -208,6 +260,14 @@ function escapeHtml(str) {
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
+}
+
+// ========== ПРЕДЗАГРУЗКА ВСЕХ ДАННЫХ ==========
+async function preloadAllData() {
+    await Promise.all([
+        loadServices(),
+        loadReviews()
+    ]);
 }
 
 // ========== ИНИЦИАЛИЗАЦИЯ ==========
@@ -249,17 +309,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Панель управления
     if (!checkAuth()) return;
     
-    // Отображение email админа
     const emailDisplay = document.getElementById('adminEmailDisplay');
     if (emailDisplay) {
         emailDisplay.textContent = localStorage.getItem('adminEmail') || 'admin@avtoshop.ru';
     }
     
-    // Кнопка выхода
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) logoutBtn.addEventListener('click', logout);
     
-    // Навигация по вкладкам
     const navItems = document.querySelectorAll('.nav-item');
     const tabs = {
         services: document.getElementById('servicesTab'),
@@ -277,32 +334,30 @@ document.addEventListener('DOMContentLoaded', () => {
             Object.values(tabs).forEach(t => t?.classList.remove('active'));
             if (tabs[tab]) tabs[tab].classList.add('active');
             
-            if (tab === 'services') loadServices();
-            if (tab === 'reviews') loadReviews();
+            if (tab === 'services' && cache.services) {
+                renderServices();
+            }
+            if (tab === 'reviews' && cache.reviews) {
+                renderReviews();
+            }
         });
     });
     
-    // Загрузка данных
-    loadServices();
-    
-    // Модалка услуги
     document.getElementById('openAddServiceModal')?.addEventListener('click', openServiceModal);
     document.getElementById('closeServiceModal')?.addEventListener('click', closeServiceModal);
     document.getElementById('cancelServiceModal')?.addEventListener('click', closeServiceModal);
     document.getElementById('serviceForm')?.addEventListener('submit', saveService);
-    
-    // Модалка подтверждения
     document.getElementById('cancelConfirm')?.addEventListener('click', closeConfirmModal);
     document.getElementById('confirmDelete')?.addEventListener('click', executeDelete);
     
-    // Закрытие модалок по клику вне
     window.onclick = (e) => {
         if (e.target.classList.contains('modal')) {
             e.target.style.display = 'none';
         }
     };
     
-    // Глобальные функции для onclick
     window.editService = editService;
     window.confirmDelete = confirmDelete;
+    
+    preloadAllData();
 });

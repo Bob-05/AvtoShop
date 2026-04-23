@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\server",
-    "\\server\\middleware",
+    "\\admin",
+    "\\css",
     "\\server\\models"
   ],
-  "SelectedNode": "\\server\\server.js",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }

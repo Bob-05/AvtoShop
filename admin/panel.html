@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель | AvtoShop</title>
+    
+    <link rel="preconnect" href="http://localhost:5000">
+    <link rel="dns-prefetch" href="http://localhost:5000">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    
     <link rel="stylesheet" href="admin.css">
 </head>
 <body class="admin-panel-page">
     <div class="admin-layout">
-        <!-- Боковое меню -->
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <h2>AvtoShop</h2>
@@ -35,26 +39,21 @@
             </div>
         </aside>
         
-        <!-- Основной контент -->
         <main class="admin-main">
-            <!-- Вкладка Услуги -->
             <div id="servicesTab" class="tab-content active">
                 <div class="page-header">
                     <h1>Управление услугами</h1>
                     <button id="openAddServiceModal" class="btn-primary">+ Добавить услугу</button>
                 </div>
-                
                 <div class="services-list" id="adminServicesList">
                     <div class="loading">Загрузка услуг...</div>
                 </div>
             </div>
             
-            <!-- Вкладка Отзывы -->
             <div id="reviewsTab" class="tab-content">
                 <div class="page-header">
                     <h1>Управление отзывами</h1>
                 </div>
-                
                 <div class="reviews-list" id="adminReviewsList">
                     <div class="loading">Загрузка отзывов...</div>
                 </div>
@@ -62,7 +61,6 @@
         </main>
     </div>
     
-    <!-- Модалка добавления/редактирования услуги -->
     <div id="serviceModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeServiceModal">&times;</span>
@@ -94,7 +92,6 @@
         </div>
     </div>
     
-    <!-- Модалка подтверждения удаления -->
     <div id="confirmModal" class="modal">
         <div class="modal-content modal-small">
             <h3>Подтверждение</h3>

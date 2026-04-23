@@ -185,14 +185,14 @@ h1, h2, h3, h4, h5, h6,
 .card {
     background-color: var(--card-bg);
     border-radius: 20px;
-    padding: 30px 20px;
+    padding: 20px 20px 24px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     height: 100%;
+    min-height: 380px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
@@ -202,28 +202,51 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .card-icon {
-    font-size: 40px;
-    margin-bottom: 5px;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
 }
 
 .card-title {
     color: var(--primary-blue);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 12px 0;
+    min-height: 54px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .card-desc {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
     color: #e0e0e0;
+    margin: 0 0 16px 0;
+    flex: 1;
+    text-align: center;
+    /* Ограничиваем количество строк, чтобы цена не уезжала */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-meta {
     font-size: 18px;
     font-weight: 800;
     color: #dc2626;
-    margin: 8px 0 5px;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
 }
 
 .card-time {
@@ -816,4 +839,110 @@ h1, h2, h3, h4, h5, h6,
 
 .main-nav a:hover {
     color: var(--primary-blue);
+}
+
+
+/*ИКОНКИ УСЛУ*/
+.card-icon {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
+
+.card-icon img {
+    max-width: 100%;
+    max-height: 110px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    display: block;
+}
+
+.card-icon-emoji {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background: rgba(30, 97, 255, 0.1);
+    border-radius: 20px;
+}
+
+/*TOAST УВЕДОМЛЕНИЯ*/
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #10b981;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideInToast 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease;
+}
+
+.toast.error {
+    background: #dc2626;
+}
+
+@keyframes slideInToast {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/*КАРТОЧКИ ПРЕИМУЩЕСТВ (ОТДЕЛЬНЫЙ СТИЛЬ)*/
+.advantage-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.advantage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+.advantage-card .advantage-icon {
+    font-size: 50px;
+    margin-bottom: 5px;
+}
+
+.advantage-card .advantage-title {
+    color: var(--primary-blue);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.advantage-card .advantage-desc {
+   font-size: 14px;
+   line-height: 1.5;
+   color: #e0e0e0;
+   margin: 0;
 }
