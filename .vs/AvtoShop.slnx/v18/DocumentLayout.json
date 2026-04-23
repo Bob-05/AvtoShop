@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\server.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:js\\script.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:js\\script.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownPreview",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownPreview"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server\\server.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -83,19 +83,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "style.css",
-              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\css\\style.css",
-              "RelativeDocumentMoniker": "css\\style.css",
-              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\css\\style.css",
-              "RelativeToolTip": "css\\style.css",
-              "ViewState": "AgIAAKcDAAAAAAAAAAAAAF8DAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-04-23T08:32:45.581Z",
+              "Title": "script.js",
+              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js",
+              "RelativeDocumentMoniker": "js\\script.js",
+              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js",
+              "RelativeToolTip": "js\\script.js",
+              "ViewState": "AgIAAF4BAAAAAAAAAAAAABcBAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-04-23T08:29:50.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "server.js",
+              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js",
+              "RelativeDocumentMoniker": "server\\server.js",
+              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js",
+              "RelativeToolTip": "server\\server.js",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAAwKEAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-04-22T07:12:49.581Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\index.html",
               "RelativeDocumentMoniker": "index.html",
@@ -104,18 +116,6 @@
               "ViewState": "AgIAAFAAAAAAAAAAAAAUwGEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2026-04-23T07:24:03.939Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "script.js",
-              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js",
-              "RelativeDocumentMoniker": "js\\script.js",
-              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\js\\script.js",
-              "RelativeToolTip": "js\\script.js",
-              "ViewState": "AgIAABABAAAAAAAAAAAQwAABAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-23T08:29:50.5Z"
             },
             {
               "$type": "Document",
@@ -167,19 +167,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "server.js",
-              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js",
-              "RelativeDocumentMoniker": "server\\server.js",
-              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\server\\server.js",
-              "RelativeToolTip": "server\\server.js",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAiwPYAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-22T07:12:49.581Z"
+              "DocumentIndex": 3,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\css\\style.css",
+              "RelativeDocumentMoniker": "css\\style.css",
+              "ToolTip": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\css\\style.css",
+              "RelativeToolTip": "css\\style.css",
+              "ViewState": "AgIAAKcDAAAAAAAAAAAAAF8DAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-23T08:32:45.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\README.md",
               "RelativeDocumentMoniker": "README.md",
@@ -187,12 +187,11 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAAGYAAAAAAAAAAAAAAHkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-04-23T07:35:57.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-23T07:35:57.465Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "README.md [\u041F\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F]",
               "DocumentMoniker": "C:\\Users\\bahte\\Desktop\\\u0423\u041F \u0427\u0435\u0440\u0435\u0432\u043A\u043E\\AvtoShop\\README.md",
               "RelativeDocumentMoniker": "README.md",
